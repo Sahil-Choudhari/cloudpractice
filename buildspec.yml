@@ -19,14 +19,14 @@ commands:
 - cp index.html build/
 - cp error.html build/
 - cp style.css build/
-- cp -r css build/ || true
-- cp -r js build/ || true
 
 post_build:
 commands:
 - echo "Build completed successfully."
+- echo "Files in build directory:"
+- ls -la build/
 
 artifacts:
+base-directory: build
 files:
 - '**/*'
-base-directory: build
