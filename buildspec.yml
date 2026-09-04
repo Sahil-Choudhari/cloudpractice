@@ -1,30 +1,32 @@
 version: 0.2
 
 phases:
-  install:
-    commands:
-      - echo "Installing dependencies..."
-  
-  pre_build:
-    commands:
-      - echo "Running pre-build checks..."
-      - test -f index.html
-      - test -f error.html
+install:
+commands:
+- echo "Installing dependencies..."
 
-  build:
-    commands:
-      - echo "Building website..."
-      - mkdir -p build
-      - cp index.html build/
-      - cp error.html build/
-      - cp -r css build/ || true
-      - cp -r js build/ || true
+pre_build:
+commands:
+- echo "Running pre-build checks..."
+- test -f index.html
+- test -f error.html
+- test -f style.css
 
-  post_build:
-    commands:
-      - echo "Build completed successfully."
+build:
+commands:
+- echo "Building website..."
+- mkdir -p build
+- cp index.html build/
+- cp error.html build/
+- cp style.css build/
+- cp -r css build/ || true
+- cp -r js build/ || true
+
+post_build:
+commands:
+- echo "Build completed successfully."
 
 artifacts:
-  files:
-    - '**/*'
-  base-directory: build
+files:
+- '**/*'
+base-directory: build
