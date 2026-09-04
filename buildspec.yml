@@ -1,32 +1,32 @@
 version: 0.2
 
 phases:
-install:
-commands:
-- echo "Installing dependencies..."
+  install:
+    commands:
+      - echo "Installing dependencies..."
 
-pre_build:
-commands:
-- echo "Running pre-build checks..."
-- test -f index.html
-- test -f error.html
-- test -f style.css
+  pre_build:
+    commands:
+      - echo "Running pre-build checks..."
+      - test -f index.html
+      - test -f error.html
+      - test -f style.css
 
-build:
-commands:
-- echo "Building website..."
-- mkdir -p build
-- cp index.html build/
-- cp error.html build/
-- cp style.css build/
+  build:
+    commands:
+      - echo "Building website..."
+      - mkdir -p build
+      - cp index.html build/
+      - cp error.html build/
+      - cp style.css build/
 
-post_build:
-commands:
-- echo "Build completed successfully."
-- echo "Files in build directory:"
-- ls -la build/
+  post_build:
+    commands:
+      - echo "Build completed successfully."
+      - echo "Files in build directory:"
+      - ls -la build/
 
 artifacts:
-base-directory: build
-files:
-- '**/*'
+  base-directory: build
+  files:
+    - '**/*'
